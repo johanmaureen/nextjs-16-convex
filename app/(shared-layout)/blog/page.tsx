@@ -36,9 +36,12 @@ async function LoadBlogList() {
           <div className="relative h-48 w-full overflow-hidden">
             <Image
               alt="test image"
-              src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZnJlZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D"
+              src={
+                post.imageUrl ??
+                "https://images.unsplash.com/photo-1526779259212-939e64788e3c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZnJlZSUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D"
+              }
               fill
-              className="rounded-t-lg"
+              className="rounded-t-lg object-cover"
             />
           </div>
           <CardContent>

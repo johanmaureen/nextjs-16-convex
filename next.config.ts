@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         protocol: "https",
       },
+      {
+        hostname: "clear-wren-570.convex.cloud",
+        protocol: "https",
+      },
     ],
   },
 };
