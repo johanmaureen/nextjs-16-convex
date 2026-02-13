@@ -1,13 +1,13 @@
-//"use client";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Suspense } from "react";
 import { api } from "@/convex/_generated/api";
-//import { useQuery } from "convex/react";
 import { fetchQuery } from "convex/nextjs";
 import { Skeleton } from "@/components/ui/skeleton";
+export const dynamic = "force-static";
+export const revalidate = 30;
 
 export default function BlogPage() {
   return (
