@@ -6,6 +6,7 @@ import { fetchAuthMutation } from "@/lib/auth-server";
 import { api } from "../convex/_generated/api";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { commentSchema } from "./schemas/comment";
 
 export async function createBlogAction(values: z.infer<typeof postSchema>) {
   const parsed = postSchema.safeParse(values);
@@ -47,4 +48,19 @@ export async function createBlogAction(values: z.infer<typeof postSchema>) {
   }
   revalidatePath("/blog");
   return redirect("/blog");
+}
+
+export async function createCommentAction(
+  values: z.infer<typeof commentSchema>,
+) {
+  const parsed = commentSchema.safeParse(values);
+
+  if (!parsed.success) {
+    throw new Error("invalid values something went wrong");
+  }
+  const comment = await fetchAuthMutation(api.comments.createComment, {
+    body: parsed.data.body,
+    postId: parsed.data.postId,
+  });
+  return comment;
 }
