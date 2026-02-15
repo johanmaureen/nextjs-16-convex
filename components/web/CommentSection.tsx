@@ -14,15 +14,15 @@ import z from "zod";
 import { Button } from "../ui/button";
 import { useTransition } from "react";
 import { api } from "@/convex/_generated/api";
-import { useQuery } from "convex/react";
+import { Preloaded, usePreloadedQuery } from "convex/react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Separator } from "../ui/separator";
 
-export function CommentSection() {
+export function CommentSection(props: {
+  preloadedComments: Preloaded<typeof api.comments.getCommentsByPostId>;
+}) {
   const params = useParams<{ postId: Id<"posts"> }>();
-  const data = useQuery(api.comments.getCommentsByPostId, {
-    postId: params.postId,
-  });
+  const data = usePreloadedQuery(props.preloadedComments);
   const [isPending, startTransition] = useTransition();
 
   const form = useForm({
@@ -51,7 +51,7 @@ export function CommentSection() {
     <Card>
       <CardHeader className="fle flex-row items-center gap-2 border-b">
         <MessageSquare className="size-5" />
-        <h2 className="text-xl font-bold">5 Comments</h2>
+        <h2 className="text-xl font-bold">{data.length} Comments</h2>
       </CardHeader>
       <CardContent className="space-y-8">
         <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
@@ -79,7 +79,7 @@ export function CommentSection() {
                 <span>Posting...</span>
               </>
             ) : (
-              <span>Post Comment</span>
+              <span>Comment</span>
             )}
           </Button>
         </form>
