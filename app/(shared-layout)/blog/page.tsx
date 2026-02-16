@@ -6,8 +6,17 @@ import { Suspense } from "react";
 import { api } from "@/convex/_generated/api";
 import { fetchQuery } from "convex/nextjs";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Metadata } from "next";
 export const dynamic = "force-static";
 export const revalidate = 30;
+
+export const metadata: Metadata = {
+  title: "Blog | Nextjs 16 Tutorial",
+  description: "Read our latest articles and insights",
+  category: "Web development",
+  creator: "Johan Russouw",
+  authors: [{ name: "Jan Marshall" }],
+};
 
 export default function BlogPage() {
   return (
