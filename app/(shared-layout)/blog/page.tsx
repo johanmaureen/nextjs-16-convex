@@ -7,8 +7,9 @@ import { api } from "@/convex/_generated/api";
 import { fetchQuery } from "convex/nextjs";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Metadata } from "next";
-export const dynamic = "force-static";
-export const revalidate = 30;
+import { connection } from "next/server";
+//export const dynamic = "force-static";
+//export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: "Blog | Nextjs 16 Tutorial",
@@ -37,6 +38,7 @@ export default function BlogPage() {
 
 async function LoadBlogList() {
   //const posts = useQuery(api.posts.getPosts);
+  await connection();
   const posts = await fetchQuery(api.posts.getPosts);
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
