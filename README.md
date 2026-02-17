@@ -9,7 +9,7 @@ After the initial setup (<2 minutes) you'll have a working full-stack app using:
 - [Next.js](https://nextjs.org/) for optimized web hosting and page routing
 - [Tailwind](https://tailwindcss.com/) for building great looking accessible UI
 
-## Get started
+## Get started xx
 
 If you just cloned this codebase and didn't use `npm create convex`, run:
 
@@ -38,6 +38,9 @@ Join thousands of developers building full-stack apps with Convex:
 
 - Join the [Convex Discord community](https://convex.dev/community) to get help in real-time.
 - Follow [Convex on GitHub](https://github.com/get-convex/), star and contribute to the open-source implementation of Convex.
+
 # nextjs16-convex
+
 # nextjs16-convex
+
 # nextjs16-convex
