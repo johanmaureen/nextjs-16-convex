@@ -38,7 +38,7 @@ export default async function PostIdRoute({ params }: PostIdRouteProps) {
   const { postId } = await params;
   //const token = await getToken();
   const [post, preloadedComments, userId] = await Promise.all([
-    await fetchQuery(api.posts.getPostById, { postId: postId }),
+    await fetchAuthQuery(api.posts.getPostById, { postId: postId }),
     await preloadAuthQuery(api.comments.getCommentsByPostId, {
       postId: postId,
     }),
